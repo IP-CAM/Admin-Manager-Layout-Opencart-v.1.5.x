@@ -1,0 +1,55 @@
+<!-- Created using vQmod XML Generator by UKSB - http://www.opencart-extensions.co.uk //-->
+<modification>
+	<id><![CDATA[Manager Layout]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[1.1.6]]></vqmver>
+	<author><![CDATA[valdeir <valdeirpsr@hotmail.com>]]></author>
+	<file name="admin/controller/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[$this->data['direction'] = $this->language->get('direction');]]></search>
+			<add><![CDATA[
+				$this->load->language('layout/layout');
+				$this->data['menu_layout'] = $this->language->get('menu_layout');
+				$this->data['menu_managerLayout'] = $this->language->get('menu_managerLayout');
+				$this->data['menu_editor'] = $this->language->get('menu_editor');
+				$this->data['menu_controller'] = $this->language->get('menu_controller');
+				$this->data['menu_language'] = $this->language->get('menu_language');
+				$this->data['menu_model'] = $this->language->get('menu_model');
+				$this->data['menu_template'] = $this->language->get('menu_template');
+				
+				if (isset($this->session->data['token'])):
+					$tokenLayout = $this->session->data['token'];
+				else:
+					$tokenLayout = '';
+				endif;
+				
+				$this->data['link_managerLayout'] = $this->url->link('layout/layout', 'token=' . $tokenLayout);
+				$this->data['link_controller'] = $this->url->link('appaearance/controllereditor', 'token=' . $tokenLayout);
+				$this->data['link_language'] = $this->url->link('appaearance/languageeditor', 'token=' . $tokenLayout);
+				$this->data['link_model'] = $this->url->link('appaearance/modeleditor', 'token=' . $tokenLayout);
+				$this->data['link_template'] = $this->url->link('appaearance/themeditor', 'token=' . $tokenLayout);
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/header.tpl">
+		<operation>
+			<search position="before"><![CDATA[<li id="help"><a class="top"><?php echo $text_help; ?></a>]]></search>
+			<add><![CDATA[
+				<li><a class="top"><?php echo $menu_layout ?></a>
+					<ul>
+					  <li><a href="<?php echo $link_managerLayout ?>"><?php echo $menu_managerLayout ?></a></li>
+					  <li><a href="#" class="parent"><?php echo $menu_editor ?></a>
+						<ul>
+							<li><a href="<?php echo $link_controller ?>"><?php echo $menu_controller ?></a></li>
+							<li><a href="<?php echo $link_language ?>"><?php echo $menu_language ?></a></li>
+							<li><a href="<?php echo $link_model ?>"><?php echo $menu_model ?></a></li>
+							<li><a href="<?php echo $link_template ?>"><?php echo $menu_template ?></a></li>
+						</ul>
+					  </li>
+					  <li><a href="http://razekproducoes.com.br/valdeir/doacao.php" target="_blank">Donate</a></li>
+					</ul>
+				  </li>
+			]]></add>
+		</operation>
+	</file>
+</modification>

@@ -1,0 +1,50 @@
+<?php echo $header; ?>
+<div id="content">
+  <div class="breadcrumb">
+    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+    <?php } ?>
+  </div>
+    <?php if (isset($this->session->data['notDelete'])) { ?>
+    <div class="warning"><?php echo $this->session->data['notDelete']; ?></div>
+    <?php unset($this->session->data['notDelete']); } ?>
+  <div class="box">
+    <div class="heading">
+      <h1><img src="view/image/order.png" alt="" />Layout</h1>
+      <div class="buttons">
+          <a href="<?php echo $linkInsert; ?>" class="button">Inserir</a>
+      </div>
+    </div>
+    <div class="content">
+        
+          <table class="list" style="width:100%;">
+          <thead>
+            <tr>
+              <td class="right">Nº Layout</td>
+              <td class="right">Nome Layout</td>
+              <td class="right">Descrição</td>
+              <td class="right">Ação</td>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($templates as $template){ ?>
+            <tr>
+              <td class="right"><?php echo $template['id']; ?></td>
+              <td class="right"><?php echo $template['nameTemplate']; ?></td>
+              <td class="right"><?php echo $template['descriptionTemplate']; ?></td>
+              <td class="right">
+                  <?php if (!$template['activated'] == 1) { ?>
+                  <a href="<?php echo $linkActivate ?>&id_template=<?php echo $template['id']; ?>">[ Ativar ]</a>
+                  <?php } ?>
+                  <a href="<?php echo $linkEdit ?>&id_template=<?php echo $template['id']; ?>">[ Editar ]</a>
+                  <a href="<?php echo $linkDelete ?>&id_template=<?php echo $template['id']; ?>">[ Deletar ]</a>
+              </td>
+             </tr>
+             <?php } ?>
+          </tbody>
+        </table>
+    </div>
+      <small>Desenvolvido por: <a href="mailto:valdeirpsr@hotmail.com.br">Valdeir Santana</a> e <a href="mailto:akaosbh@gmail.com">Glauco Oliveira</a></small>
+  </div>
+</div>
+<?php echo $footer; ?>
