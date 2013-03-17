@@ -1,25 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 3.5.2
--- http://www.phpmyadmin.net
---
--- Servidor: localhost
--- Tempo de Geração: 
--- Versão do Servidor: 5.5.8-log
--- Versão do PHP: 5.3.5
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
---
--- Banco de Dados: `opencartnew`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `layouts`
---
-
 DROP TABLE IF EXISTS `layouts`;
 CREATE TABLE IF NOT EXISTS `layouts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
